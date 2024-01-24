@@ -1,0 +1,177 @@
+openapi: '3.0.2'
+info:
+  title: Microservice Account - OpenAPI 3.0
+  version: '1.0'
+  description: |- 
+    La presente especificación contiene los endpoints del microservicio Account
+    y esta basado en la especificación OpenAPI 3.0.  
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: alcibarvasquez@gmail.com
+servers:
+  - url: http://localhost:8091
+
+tags:
+  - name: Account
+    description: account
+
+paths:  
+  /account:
+    post:
+      tags:
+        - Account
+      operationId: addAccount
+      description: 'POST'
+      requestBody:
+        $ref: '#/components/requestBodies/AccountRequest'
+      responses:
+        '200':
+          description: 'response account post'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'      
+    get:
+      tags:
+        - Account
+      operationId: getAllAccounts
+      description: GETALL
+      responses:
+        '200':
+          description: 'response get all accounts'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountResponse'
+  /account/{accountId}:
+    put:
+      tags:
+        - Account
+      operationId: updateAccount
+      description: 'PUT'
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/AccountRequest'
+      responses:
+        '200':
+          description: 'response account put'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+    get:
+      tags:
+        - Account
+      operationId: getAccountById
+      description: GET
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'response get account by id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+    delete:
+      tags:
+        - Account
+      operationId: deleteAccountById
+      description: 'DELETE'
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: delete account by id
+
+components:
+  schemas:
+    AccountRequest:
+      type: object
+      description: Account model
+      required:
+        - clientId
+        - productId
+      properties:
+        clientId:
+          type: string
+          example: '1'          
+        productId:
+          type: string
+          example: '1'  
+        businessEntity:
+          type: string
+          example: 'BCP'  
+        accountNumber:
+          type: string
+          example: '4521632585471234'
+        availableBalance:
+          type: number
+          format: double
+          example: 700.80
+        createdAt:
+          type: string
+          format: date-time
+    AccountResponse:
+      type: object
+      description: Account model
+      required:
+        - accountId
+        - accountTypeId
+      properties:
+        accountId:
+          type: integer
+          example: 1
+        clientId:
+          type: string
+          example: '1'          
+        product:
+          $ref: '#/components/schemas/ProductResponse'
+        businessEntity:
+          type: string
+          example: 'BCP'  
+        accountNumber:
+          type: string
+          example: '4521632585471234'
+        availableBalance:
+          type: number
+          format: double
+          example: 700.80
+        createdAt:
+          type: string
+          format: date-time
+    ProductResponse:
+      type: object
+      description: Product model
+      properties:
+        productId:
+          type: string
+          example: '1'
+        productTypeId:
+          type: string
+          example: '1' 
+        name:
+          type: string
+          example: 'AHORRO, CC, PLAZO FIJO' 
+  requestBodies:
+    AccountRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AccountRequest'
