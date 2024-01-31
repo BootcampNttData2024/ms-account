@@ -22,16 +22,21 @@ public class Account {
     private String clientId;
 
     @NotNull
-    private String productId;
+    private String productBusinessRuleId;
 
     private String businessEntity;
 
     @NotNull
     private String accountNumber;
 
-    @NotNull
+    private Double minOpening;
+
+    private Double minMonthlyAmount;
+
     private Double availableBalance;
 
-    private LocalDate createdAt;
+    private String headlinesIds;
+
+    private String signatoriesIds;
 
 }

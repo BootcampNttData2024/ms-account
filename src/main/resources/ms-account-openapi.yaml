@@ -83,7 +83,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountResponse'
+                $ref: '#/components/schemas/AccountResponse'    
     delete:
       tags:
         - Account
@@ -98,6 +98,25 @@ paths:
       responses:
         '200':
           description: delete account by id
+  /account/filter: 
+    get:
+      tags:
+        - Account
+      operationId: getByAccountNumber
+      description: GET
+      parameters:
+        - in: query
+          name: accountNumber
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'response get account by id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
 
 components:
   schemas:
@@ -107,11 +126,13 @@ components:
       required:
         - clientId
         - productId
+        - productBusinessRuleId
+        - minOpening
       properties:
         clientId:
           type: string
           example: '1'          
-        productId:
+        productBusinessRuleId:
           type: string
           example: '1'  
         businessEntity:
@@ -120,13 +141,20 @@ components:
         accountNumber:
           type: string
           example: '4521632585471234'
-        availableBalance:
+        minOpening:
           type: number
           format: double
-          example: 700.80
-        createdAt:
+          example: 0.1
+        minMonthlyAmount:
+          type: number
+          format: double
+          example: 500.80
+        headlinesIds:          
+          type: string  
+          example: '2,5'         
+        signatoriesIds:          
           type: string
-          format: date-time
+          example: '1,5,7'
     AccountResponse:
       type: object
       description: Account model
@@ -135,39 +163,38 @@ components:
         - accountTypeId
       properties:
         accountId:
-          type: integer
+          type: string
           example: 1
         clientId:
           type: string
           example: '1'          
-        product:
-          $ref: '#/components/schemas/ProductResponse'
+        productBusinessRuleId:
+          type: string
+          example: '1'
         businessEntity:
           type: string
           example: 'BCP'  
         accountNumber:
           type: string
           example: '4521632585471234'
+        minOpening:
+          type: string
+          format: double
+          example: 0.0
+        minMonthlyAmount:
+          type: number
+          format: double
+          example: 500.80
         availableBalance:
           type: number
           format: double
           example: 700.80
-        createdAt:
+        headlinesIds:          
+          type: string  
+          example: '2,6'         
+        signatoriesIds:          
           type: string
-          format: date-time
-    ProductResponse:
-      type: object
-      description: Product model
-      properties:
-        productId:
-          type: string
-          example: '1'
-        productTypeId:
-          type: string
-          example: '1' 
-        name:
-          type: string
-          example: 'AHORRO, CC, PLAZO FIJO' 
+          example: '1,6,7'
   requestBodies:
     AccountRequest:
       required: true
