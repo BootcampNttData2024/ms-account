@@ -49,7 +49,6 @@
 			<version>4.1.0</version>
 		</dependency>
 
-
 		<!--dependencies for API First-->
 		<dependency>
 			<groupId>io.swagger.codegen.v3</groupId>
@@ -95,13 +94,37 @@
 								<reactive>true</reactive>
 								<serializableModel>true</serializableModel>
 								<delegatePattern>true</delegatePattern>
-								<useResponseEntity>false</useResponseEntity>
 							</configOptions>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>4.0.0-M13</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.5.0</version>
+			</plugin>
 		</plugins>
 	</build>
-
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.3.1</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>checkstyle</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>

@@ -149,6 +149,10 @@ components:
           type: number
           format: double
           example: 500.80
+        availableBalance:
+          type: number
+          format: double
+          example: 700.80
         headlinesIds:          
           type: string  
           example: '2,5'         
@@ -167,7 +171,10 @@ components:
           example: 1
         clientId:
           type: string
-          example: '1'          
+          example: '1'
+        productId:
+          type: string
+          example: '1'           
         productBusinessRuleId:
           type: string
           example: '1'

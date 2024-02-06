@@ -5,9 +5,14 @@ spring:
     mongodb:
       uri: mongodb+srv://BootcampNttdata2024:k9tUuUwOvkdqqrjE@bootcampnttdata2024.zcxsoou.mongodb.net/?retryWrites=true&w=majority
       database: MSDBACCOUNT
+logging:
+  level:
+    root: INFO
 
 microservices:
   ms-product:
     base:url: http://localhost:8094
   ms-credit:
     base:url: http://localhost:8093
+  ms-client:
+    base:url: http://localhost:8092

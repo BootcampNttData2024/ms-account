@@ -1,42 +1,53 @@
 package com.vasquez.msaccount.entity;
 
-import lombok.*;
+import javax.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
-
+/**
+ * Account entity.
+ *
+ * @author Vasquez
+ * @version 1.0.
+ */
 @Data
-@Builder
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@Builder
 @Document(collection = "account")
 public class Account {
 
-    @Id
-    private String accountId;
+  @Id
+  private String accountId;
 
-    @NotNull
-    private String clientId;
+  @NotNull
+  private String clientId;
 
-    @NotNull
-    private String productBusinessRuleId;
+  @NotNull
+  private String productId;
 
-    private String businessEntity;
+  @NotNull
+  private String productBusinessRuleId;
 
-    @NotNull
-    private String accountNumber;
+  private String businessEntity;
 
-    private Double minOpening;
+  @NotNull
+  private String accountNumber;
 
-    private Double minMonthlyAmount;
+  private Double minOpening;
 
-    private Double availableBalance;
+  private Double minMonthlyAmount;
 
-    private String headlinesIds;
+  private Double availableBalance;
 
-    private String signatoriesIds;
+  private String headlinesIds;
+
+  private String signatoriesIds;
 
 }

@@ -2,43 +2,49 @@ package com.vasquez.msaccount.proxy.model;
 
 import lombok.Data;
 
+/**
+ * Credit card response.
+ *
+ * @author Vasquez
+ * @version 1.0.
+ */
 @Data
 public class ProductBusinessRuleResponse {
 
-    private String productBusinessRuleId;
+  private String productBusinessRuleId;
 
-    private String productId;
+  private String productId;
 
-    private String clientType;
+  private String clientType;
 
-    private String profileType;
+  private String profileType;
 
-    private Double maintenanceCommission;
+  private Double maintenanceCommission;
 
-    private Integer minHolders;
+  private Integer minHolders;
 
-    private Integer minSignatories;
+  private Integer minSignatories;
 
-    private String maxMovementsPerMonth;
+  private String maxMovementsPerMonth;
 
-    private String dayMovementsPerMonth;
+  private String dayMovementsPerMonth;
 
-    private String maxSavingAccounts;
+  private String maxSavingAccounts;
 
-    private String maxCurrentAccounts;
+  private String maxCurrentAccounts;
 
-    private String maxFixedTermAccounts;
+  private String maxFixedTermAccounts;
 
-    private String maxCredits;
+  private String maxCredits;
 
-    private Double minMonthlyAmount;
+  private Double minMonthlyAmount;
 
-    private Boolean requiredCreditCard;
+  private Boolean requiredCreditCard;
 
-    private Boolean requiredCurrentAccount;
+  private Boolean requiredCurrentAccount;
 
-    private String maxTransactionFree;
+  private String maxTransactionFree;
 
-    private Double commissionPerTransaction;
+  private Double commissionPerTransaction;
 
 }
