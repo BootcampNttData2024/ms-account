@@ -1,4 +1,4 @@
-package com.vasquez.msaccount.service.impl;
+package com.vasquez.msaccount.business.impl;
 
 import com.vasquez.msaccount.entity.Account;
 import com.vasquez.msaccount.entity.enums.ClientType;
@@ -8,19 +8,16 @@ import com.vasquez.msaccount.proxy.ClientProxy;
 import com.vasquez.msaccount.proxy.CreditProxy;
 import com.vasquez.msaccount.proxy.ProductProxy;
 import com.vasquez.msaccount.proxy.model.ClientResponse;
-import com.vasquez.msaccount.proxy.model.CreditResponse;
 import com.vasquez.msaccount.proxy.model.ProductResponse;
 import com.vasquez.msaccount.repository.AccountRepository;
-import com.vasquez.msaccount.service.AccountService;
-import com.vasquez.msaccount.service.exception.AppException;
-import com.vasquez.msaccount.util.AppUtil;
+import com.vasquez.msaccount.business.AccountService;
+import com.vasquez.msaccount.business.exception.AppException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
-import java.time.LocalDateTime;
 import java.util.function.Predicate;
 
 /**
@@ -81,7 +78,7 @@ public class AccountServiceImpl implements AccountService {
               .badRequest("Conflict: The clientId is of type " + clientResponse.getClientType() + " while the productBusinessRuleId is of " + productParameter.getClientType() + " type"));
 
           request.setProductId(productParameter.getProductId());
-          Predicate<String> evaluateEqualsProductName = (value) -> value.equals(productResponse.getName());
+          Predicate<String> evaluateEqualsProductName = value -> value.equals(productResponse.getName());
 
           boolean isPersonalClient = ClientType.PERSONAL.getValue().equals(productParameter.getClientType());
           boolean isBusinessClient = ClientType.BUSINESS.getValue().equals(productParameter.getClientType());

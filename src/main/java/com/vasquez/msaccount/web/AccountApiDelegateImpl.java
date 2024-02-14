@@ -4,7 +4,7 @@ package com.vasquez.msaccount.web;
 import com.vasquez.msaccount.api.AccountApiDelegate;
 import com.vasquez.msaccount.model.AccountRequest;
 import com.vasquez.msaccount.model.AccountResponse;
-import com.vasquez.msaccount.service.AccountService;
+import com.vasquez.msaccount.business.AccountService;
 import com.vasquez.msaccount.web.mapper.AccountMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
